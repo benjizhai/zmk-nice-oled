@@ -4,6 +4,7 @@
 extern "C" {
 #endif
 #include "lvgl.h"
+#include <lvgl9_compat.h>
 // -------- Image Descriptors Declarations --------
 LV_IMG_DECLARE(vim_32x100);
 LV_IMG_DECLARE(vim_32x128);

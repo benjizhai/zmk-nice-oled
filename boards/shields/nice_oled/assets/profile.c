@@ -1,4 +1,5 @@
 #include <lvgl.h>
+#include <lvgl9_compat.h>
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
 #define LV_ATTRIBUTE_MEM_ALIGN
@@ -23,11 +24,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_PROFILE u
 };
 
 const lv_img_dsc_t profile = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 12,
-    .header.h = 12,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 12,
+        .h = 12,
+        .stride = 2,
+    },
     .data_size = 32,
     .data = profile_map,
 };

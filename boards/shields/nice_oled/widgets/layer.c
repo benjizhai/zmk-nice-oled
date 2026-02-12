@@ -2,7 +2,7 @@
 #include <fonts.h>
 #include <zephyr/kernel.h>
 
-void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
+void draw_layer_status(lv_layer_t *layer, const struct status_state *state) {
     lv_draw_label_dsc_t label_dsc;
 #if IS_ENABLED(CONFIG_NICE_EPAPER_ON)
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &pixel_operator_mono_16, LV_TEXT_ALIGN_CENTER);
@@ -20,7 +20,15 @@ void draw_layer_status(lv_obj_t *canvas, const struct status_state *state) {
     }
 
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_RESPONSIVE_BONGO_CAT)
-    lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
+    lv_draw_rect_dsc_t bg;
+    lv_draw_rect_dsc_init(&bg);
+    bg.bg_color = LVGL_BACKGROUND;
+    bg.bg_opa = LV_OPA_COVER;
+    lv_area_t bg_area = {0, 0, CANVAS_WIDTH - 1, CANVAS_HEIGHT - 1};
+    lv_draw_rect(layer, &bg, &bg_area);
 #endif
-    lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y, 68, &label_dsc, text);
+    label_dsc.text = text;
+    lv_area_t area = {CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y,
+                      CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_X + 68 - 1, CONFIG_NICE_OLED_WIDGET_LAYER_CUSTOM_Y + 200};
+    lv_draw_label(layer, &label_dsc, &area);
 }

@@ -7,6 +7,7 @@
  */
 
 #include <lvgl.h>
+#include <lvgl9_compat.h>
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
 #define LV_ATTRIBUTE_MEM_ALIGN
@@ -281,11 +282,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SLEEP_VIE
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 const lv_img_dsc_t sleep_view = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 140,
-    .header.h = 68,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 140,
+        .h = 68,
+        .stride = 18,
+    },
     .data_size = 1232,
     .data = sleep_view_map,
 };
@@ -377,10 +380,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_SLEEP_OLE
 };
 
 const lv_img_dsc_t sleep_oled = {
-    .header.always_zero = 0,
-    .header.w = 128,
-    .header.h = 32,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 128,
+        .h = 32,
+        .stride = 16,
+    },
     .data_size = 520,
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
     .data = sleep_oled_map,
 };

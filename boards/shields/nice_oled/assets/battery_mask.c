@@ -1,4 +1,5 @@
 #include <lvgl.h>
+#include <lvgl9_compat.h>
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
 #define LV_ATTRIBUTE_MEM_ALIGN
@@ -36,11 +37,13 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BATTERY_M
 };
 
 const lv_img_dsc_t battery_mask = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 58,
-    .header.h = 27,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 58,
+        .h = 27,
+        .stride = 8,
+    },
     .data_size = 224,
     .data = battery_mask_map,
 };

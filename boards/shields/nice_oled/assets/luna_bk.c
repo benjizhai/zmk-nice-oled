@@ -336,6 +336,7 @@ const unsigned char epd_bitmap_ [] PROGMEM = {
 
 */
 #include <lvgl.h>
+#include <lvgl9_compat.h>
 
 #ifndef LV_ATTRIBUTE_MEM_ALIGN
 #define LV_ATTRIBUTE_MEM_ALIGN
@@ -779,132 +780,156 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_DOG_BARK2
 
 /* Descriptor: Dog Sit1 */
 const lv_img_dsc_t dog_sit1 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32, /* Ancho de la imagen */
-    .header.h = 22, /* Alto de la imagen */
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_sit1_map),
     .data = dog_sit1_map,
 };
 
 /* Descriptor: Dog Sit2 */
 const lv_img_dsc_t dog_sit2 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_sit2_map),
     .data = dog_sit2_map,
 };
 
 /* Descriptor: Dog Walk1 */
 const lv_img_dsc_t dog_walk1 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_walk1_map),
     .data = dog_walk1_map,
 };
 
 /* Descriptor: Dog Walk2 */
 const lv_img_dsc_t dog_walk2 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_walk2_map),
     .data = dog_walk2_map,
 };
 
 /* Descriptor: Dog Run1 */
 const lv_img_dsc_t dog_run1 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_run1_map),
     .data = dog_run1_map,
 };
 
 /* Descriptor: Dog Run2 */
 const lv_img_dsc_t dog_run2 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_run2_map),
     .data = dog_run2_map,
 };
 
 /* Descriptor: Dog Bark1 */
 const lv_img_dsc_t dog_bark1 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_bark1_map),
     .data = dog_bark1_map,
 };
 
 /* Descriptor: Dog Bark2 */
 const lv_img_dsc_t dog_bark2 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_bark2_map),
     .data = dog_bark2_map,
 };
 
 /* Descriptor: Dog Sneak1 */
 const lv_img_dsc_t dog_sneak1 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_sneak1_map),
     .data = dog_sneak1_map,
 };
 
 /* Descriptor: Dog Sneak2 */
 const lv_img_dsc_t dog_sneak2 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 32,
-    .header.h = 22,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 32,
+        .h = 22,
+        .stride = 4,
+    },
     .data_size = sizeof(dog_sneak2_map),
     .data = dog_sneak2_map,
 };
 
 /* Descriptor: Dog Bark1_90 */
 const lv_img_dsc_t dog_bark1_90 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 24,
-    .header.h = 32,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 24,
+        .h = 32,
+        .stride = 3,
+    },
     .data_size = sizeof(dog_bark1_map_90),
     .data = dog_bark1_map_90,
 };
 
 /* Descriptor: Dog Bark2_90 */
 const lv_img_dsc_t dog_bark2_90 = {
-    .header.cf = LV_IMG_CF_INDEXED_1BIT,
-    .header.always_zero = 0,
-    .header.reserved = 0,
-    .header.w = 24,
-    .header.h = 32,
+    .header = {
+        .magic = LV_IMAGE_HEADER_MAGIC,
+        .cf = LV_IMG_CF_INDEXED_1BIT,
+        .w = 24,
+        .h = 32,
+        .stride = 3,
+    },
     .data_size = sizeof(dog_bark2_map_90),
     .data = dog_bark2_map_90,
 };

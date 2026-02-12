@@ -4,6 +4,7 @@
 extern "C" {
 #endif
 #include "lvgl.h"
+#include <lvgl9_compat.h>
 // -------- Image Descriptors Declarations --------
 LV_IMG_DECLARE(bongo_cat_double_tap1_01);
 LV_IMG_DECLARE(bongo_cat_double_tap1_02);

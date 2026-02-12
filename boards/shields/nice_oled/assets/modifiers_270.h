@@ -4,6 +4,7 @@
 extern "C" {
 #endif
 #include "lvgl.h"
+#include <lvgl9_compat.h>
 // -------- Image Descriptors Declarations --------
 LV_IMG_DECLARE(alt_0);
 LV_IMG_DECLARE(alt_white_0);

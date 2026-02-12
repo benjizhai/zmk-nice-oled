@@ -7,6 +7,7 @@
 #pragma once
 
 #include <lvgl.h>
+#include <lvgl9_compat.h>
 #include <zephyr/kernel.h>
 
 struct zmk_widget_wpm_bongo_cat {
