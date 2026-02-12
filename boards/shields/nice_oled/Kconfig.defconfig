@@ -175,7 +175,6 @@ config NICE_OLED_WIDGET_PERIPHERAL
 ### ONLY FOR PERIPHERAL END }}}
 ### ANIMATION ON PERIPHERAL END }}}
 ### WIDGET ON CENTRAL START {{{
-if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
 ### NICE OLED WIDGET WPM {{{
 
 config NICE_OLED_WIDGET_WPM
@@ -185,7 +184,7 @@ config NICE_OLED_WIDGET_WPM
 if NICE_OLED_WIDGET_WPM
 
 config NICE_OLED_WIDGET_STATUS
-    select ZMK_WPM
+    select ZMK_WPM if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
 
 config NICE_OLED_WIDGET_WPM_NUMBER
     bool "Enable NUMBER for WPM"
@@ -278,7 +277,7 @@ if NICE_OLED_WIDGET_HID_INDICATORS
 
 config ZMK_HID_INDICATORS
     bool "Enable HID indicators"
-    default y
+    default y if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
 
 config NICE_OLED_WIDGET_HID_INDICATORS_LUNA
     bool "Enable HID indicators luna"
@@ -513,7 +512,6 @@ config NICE_OLED_WIDGET_CENTRAL
     bool "Enable test widget on central"
     default n
 ### ONLY FOR CENTRAL END }}}
-endif # !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
 ## ANIMATION ON CENTRAL END }}}
 ### WIDGET POSITION COORDINATES START {{{
 # These variables allow users to customize widget positions.
