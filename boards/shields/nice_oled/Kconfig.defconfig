@@ -80,6 +80,8 @@ config NICE_OLED_WIDGET_STATUS
     select LV_USE_CANVAS
     select LV_USE_ANIMIMG
     select LV_USE_ANIMATION
+    select ZMK_BATTERY_REPORTING
+    select ZMK_SPLIT_BLE if ZMK_SPLIT && ZMK_BLE
 
 config NICE_OLED_WIDGET_INVERTED
     bool "Invert display colors"
