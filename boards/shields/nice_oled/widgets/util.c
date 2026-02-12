@@ -12,34 +12,14 @@ void rotate_canvas(lv_obj_t *canvas, lv_color_t cbuf[]) {
   static lv_color_t cbuf_tmp[CANVAS_HEIGHT * CANVAS_HEIGHT];
   memcpy(cbuf_tmp, cbuf, sizeof(cbuf_tmp));
 
-  lv_img_dsc_t img = {
-    .header = {
-      .magic = LV_IMAGE_HEADER_MAGIC,
-      .cf = LV_IMG_CF_TRUE_COLOR,
-      .w = CANVAS_HEIGHT,
-      .h = CANVAS_HEIGHT,
-      .stride = CANVAS_HEIGHT * sizeof(lv_color_t),
-    },
-    .data_size = sizeof(cbuf_tmp),
-    .data = (const uint8_t *)cbuf_tmp,
-  };
+  // 90-degree clockwise rotation: dst(H-1-y, x) = src(x, y)
+  for (int y = 0; y < CANVAS_HEIGHT; y++) {
+    for (int x = 0; x < CANVAS_HEIGHT; x++) {
+      cbuf[x * CANVAS_HEIGHT + (CANVAS_HEIGHT - 1 - y)] = cbuf_tmp[y * CANVAS_HEIGHT + x];
+    }
+  }
 
-  lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-
-  lv_layer_t layer;
-  lv_canvas_init_layer(canvas, &layer);
-
-  lv_draw_image_dsc_t d;
-  lv_draw_image_dsc_init(&d);
-  d.src = &img;
-  d.rotation = 900;
-  d.pivot.x = CANVAS_HEIGHT / 2;
-  d.pivot.y = CANVAS_HEIGHT / 2;
-
-  lv_area_t area = {0, 0, CANVAS_HEIGHT - 1, CANVAS_HEIGHT - 1};
-  lv_draw_image(&layer, &d, &area);
-
-  lv_canvas_finish_layer(canvas, &layer);
+  lv_obj_invalidate(canvas);
 }
 
 void draw_background(lv_layer_t *layer) {
