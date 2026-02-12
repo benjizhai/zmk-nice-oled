@@ -1,16 +1,20 @@
-if SHIELD_NICE_OLED || SHIELD_NICE_EPAPER || SHIELD_NICE_CUSTOM
-### GENERAL CONFIG START {{{
 config NICE_CUSTOM_ON
     bool "Enable nice custom widget compatibility"
     default n
+    default y if SHIELD_NICE_CUSTOM
 
 config NICE_OLED_ON
     bool "Enable nice oled widget compatibility"
-    default y
+    default n
+    default y if SHIELD_NICE_OLED
 
 config NICE_EPAPER_ON
     bool "Enable nice view widget compatibility"
     default n
+    default y if SHIELD_NICE_EPAPER
+
+if NICE_OLED_ON || NICE_EPAPER_ON || NICE_CUSTOM_ON
+### GENERAL CONFIG START {{{
 
 config NICE_OLED_CUSTOM_CANVAS_WIDTH
     int "Custom Canvas Width"
@@ -832,5 +836,5 @@ config NICE_OLED_WIDGET_SLEEP_STATUS_CUSTOM_Y
 ##}}}
 
 ### WIDGET POSITION COORDINATES END }}}
-endif # SHIELD_NICE_OLED || SHIELD_NICE_EPAPER || SHIELD_NICE_CUSTOM
+endif # NICE_OLED_ON || NICE_EPAPER_ON || NICE_CUSTOM_ON
 # vim: set fdm=marker:
